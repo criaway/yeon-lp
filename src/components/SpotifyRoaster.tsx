@@ -75,16 +75,6 @@ const SpotifyRoaster: React.FC = () => {
     }
   };
 
-  const getIntensityColor = (level: RoastIntensity): string => {
-    switch (level) {
-      case 'leve': return 'bg-green-500/80 hover:bg-green-600 data-[state=on]:bg-green-700';
-      case 'media': return 'bg-yellow-500/80 hover:bg-yellow-600 data-[state=on]:bg-yellow-700';
-      case 'pesada': return 'bg-orange-500/80 hover:bg-orange-600 data-[state=on]:bg-orange-700';
-      case 'infernal': return 'bg-red-500/80 hover:bg-red-600 data-[state=on]:bg-red-700';
-      default: return '';
-    }
-  };
-
   return (
     <div className="max-w-3xl mx-auto">
       <div className="space-y-6">
@@ -128,41 +118,39 @@ const SpotifyRoaster: React.FC = () => {
               
               <div className="mt-2">
                 <p className="text-sm font-medium mb-2">Escolha a intensidade da fritada:</p>
-                <ToggleGroup 
-                  type="single" 
+                <RadioGroup 
                   value={intensity} 
-                  onValueChange={(value) => value && setIntensity(value as RoastIntensity)}
-                  className="flex justify-between w-full flex-wrap gap-2"
+                  onValueChange={(value) => setIntensity(value as RoastIntensity)}
+                  className="grid grid-cols-4 gap-2"
                 >
-                  <ToggleGroupItem 
-                    value="leve" 
-                    className={`${intensity === 'leve' ? 'text-white' : ''} ${getIntensityColor('leve')}`}
-                  >
-                    <Flame className="mr-1 h-4 w-4" />
-                    Leve
-                  </ToggleGroupItem>
-                  <ToggleGroupItem 
-                    value="media" 
-                    className={`${intensity === 'media' ? 'text-white' : ''} ${getIntensityColor('media')}`}
-                  >
-                    <Flame className="mr-1 h-4 w-4" />
-                    Média
-                  </ToggleGroupItem>
-                  <ToggleGroupItem 
-                    value="pesada" 
-                    className={`${intensity === 'pesada' ? 'text-white' : ''} ${getIntensityColor('pesada')}`}
-                  >
-                    <Flame className="mr-1 h-4 w-4" />
-                    Pesada
-                  </ToggleGroupItem>
-                  <ToggleGroupItem 
-                    value="infernal" 
-                    className={`${intensity === 'infernal' ? 'text-white' : ''} ${getIntensityColor('infernal')}`}
-                  >
-                    <Flame className="mr-1 h-4 w-4" />
-                    Infernal
-                  </ToggleGroupItem>
-                </ToggleGroup>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="leve" id="leve" />
+                    <label htmlFor="leve" className="text-sm font-medium">
+                      Leve
+                    </label>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="media" id="media" />
+                    <label htmlFor="media" className="text-sm font-medium">
+                      Média
+                    </label>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="pesada" id="pesada" />
+                    <label htmlFor="pesada" className="text-sm font-medium">
+                      Pesada
+                    </label>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="infernal" id="infernal" />
+                    <label htmlFor="infernal" className="text-sm font-medium">
+                      Infernal
+                    </label>
+                  </div>
+                </RadioGroup>
               </div>
               
               {error && (
