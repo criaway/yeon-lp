@@ -20,7 +20,7 @@ const FinalCTASection: React.FC = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button size="lg" className="bg-yeon-purple hover:bg-yeon-dark-purple text-white px-8 py-6 text-lg" asChild>
-            <Link to="/calculator">
+            <Link to="/waitlist">
               Comece Agora
             </Link>
           </Button>

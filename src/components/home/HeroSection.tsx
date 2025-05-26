@@ -41,7 +41,7 @@ const HeroSection: React.FC = () => {
         
         <div className="flex flex-col sm:flex-row gap-4 mt-4 animate-fade-in">
           <Button size="lg" className="bg-yeon-purple hover:bg-yeon-dark-purple text-white font-medium px-8 py-6 text-lg" asChild>
-            <RouterLink to="/calculator">
+            <RouterLink to="/waitlist">
               Comece Agora
             </RouterLink>
           </Button>
