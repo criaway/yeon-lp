@@ -28,7 +28,7 @@ const ValuePropositionSection: React.FC = () => {
     {
       icon: <Settings className="h-8 w-8 text-yeon-purple" />,
       title: "Gestão Inteligente",
-      description: "Centralize lançamentos, catálogo, contratos e finanças em um só lugar. Menos b.o, mais ritmo."
+      description: "Centralize lançamentos, catálogo, contratos e finanças em um só lugar. Menos burocracia, mais música."
     },
     {
       icon: <Globe className="h-8 w-8 text-yeon-purple" />,
