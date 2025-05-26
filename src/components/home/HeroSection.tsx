@@ -36,7 +36,7 @@ const HeroSection: React.FC = () => {
         </h1>
         
         <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-8 animate-fade-in">
-          Gerencie sua carreira musical, distribua seu trabalho globalmente e maximize seus ganhos em uma única plataforma.
+          Uma plataforma completa pra botar ritmo na sua carreira.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 mt-4 animate-fade-in">
