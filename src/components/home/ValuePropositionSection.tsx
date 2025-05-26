@@ -31,7 +31,7 @@ const ValuePropositionSection: React.FC = () => {
       description: "Nossa plataforma oferece um centro de comando para você gerenciar seus lançamentos, catálogo, contratos, finanças e projetos de forma intuitiva. Dedique mais tempo à sua arte, nós simplificamos a administração."
     },
     {
-      icon: <Heart className="h-8 w-8 text-yeon-purple" />,
+      icon: <Globe className="h-8 w-8 text-yeon-purple" />,
       title: "Fãs e Mercado",
       description: "Amplie seu alcance e fortaleça sua presença. Utilize nossas ferramentas para apresentar sua música a curadores de playlists, conectar-se com sua base de fãs através do marketplace e crowdfunding, e gerenciar seus relacionamentos profissionais com segurança e clareza.."
     },
