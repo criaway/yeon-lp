@@ -12,20 +12,20 @@ const FAQSection: React.FC = () => {
     t
   } = useLanguage();
   const faqs: FAQItem[] = [{
-    question: "Quanto tempo leva para minha música estar disponível nas plataformas?",
-    answer: "Geralmente, sua música estará disponível em todas as plataformas em 1-3 dias úteis após a aprovação. Para lançamentos importantes, recomendamos agendar com pelo menos 2 semanas de antecedência."
+    question: "O que é a Yeon, afinal?",
+    answer: "A Yeon é uma plataforma que acelera a carreira de artistas independentes. Aqui você organiza sua vida musical, conecta com o mercado e monetiza sua arte de forma direta, clara e estratégica."
   }, {
-    question: "Como são calculados os meus ganhos?",
-    answer: "Seus ganhos são calculados com base nas taxas de streaming de cada plataforma multiplicadas pelo número de reproduções. Cada plataforma tem suas próprias taxas, que você pode conferir em detalhes na nossa Calculadora de Streams."
+    question: "A Yeon é uma distribuidora digital?",
+    answer: "Ainda não — mas em breve, sim. No momento, somos uma central de gestão, monetização e conexão com oportunidades reais. A distribuição vem aí como parte do nosso plano de expansão."
   }, {
-    question: "Posso mudar de plano a qualquer momento?",
-    answer: "Sim! Você pode atualizar seu plano a qualquer momento. Se optar por um downgrade, a mudança será aplicada no próximo ciclo de cobrança."
+    question: "O que dá pra fazer na plataforma?",
+    answer: "Você pode gerenciar seus lançamentos, contratos e finanças, criar campanhas de financiamento coletivo, vender direto aos fãs, encontrar oportunidades de GIGs e apresentar sua música para curadores. Tudo em um só lugar."
   }, {
-    question: "Qual é a frequência de pagamento dos royalties?",
-    answer: "A frequência de pagamento depende do seu plano: trimestral para o plano Básico, mensal para o plano Profissional e semanal para o plano Etiqueta."
+    question: "Quem pode usar a Yeon?",
+    answer: "Qualquer artista independente que esteja levando sua carreira a sério. Seja você solo, banda, produtora ou selo, se quer profissionalizar seu corre, a Yeon é pra você."
   }, {
-    question: "A Yeon Music cobra alguma porcentagem dos meus ganhos?",
-    answer: "Não! Diferentemente de muitos distribuidores, cobramos apenas a assinatura fixa do plano. 100% dos seus royalties vão diretamente para você."
+    question: "A Yeon cobra alguma coisa?",
+    answer: "Algumas funcionalidades são gratuitas, outras fazem parte de planos pagos ou cobram uma taxa justa sobre o que você monetiza. Nada escondido, tudo transparente — do jeito que artista merece."
   }];
   return <section className="py-20 bg-yeon-darker-bg rounded-md">
       <div className="container px-4">
