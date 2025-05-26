@@ -9,7 +9,7 @@ const ArtistFeatures: React.FC = () => {
       description: "Arrecade fundos para seus projetos musicais diretamente de seus fãs, oferecendo recompensas exclusivas e mantendo o controle criativo sobre sua música."
     },
     {
-      title: "Painel Analítico",
+      title: "Dashboard Inteligente",
       description: "Acompanhe o desempenho da sua música com estatísticas detalhadas, insights sobre seu público e tendências de crescimento em tempo real."
     },
     {
@@ -34,7 +34,7 @@ const ArtistFeatures: React.FC = () => {
       description: "Aumente a visibilidade da sua música com ferramentas para submissão direta para curadores de playlists e oportunidades de exposição."
     },
     {
-      title: "Contratos e Divisão de Royalties",
+      title: "Contratos e Splits",
       description: "Gerencie contratos, colaborações e divisões de royalties sem complicações, garantindo transparência e precisão nos pagamentos."
     }
   ];
