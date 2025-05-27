@@ -28,17 +28,17 @@ const ValuePropositionSection: React.FC = () => {
     {
       icon: <Settings className="h-8 w-8 text-yeon-orange" />,
       title: "Gestão Inteligente",
-      description: "Ferramentas avançadas para gerenciar sua carreira musical de forma eficiente e profissional."
+      description: "Centralize lançamentos, catálogo, contratos e finanças em um só lugar. Menos burocracia, mais música."
     },
     {
-      icon: <Globe className="h-8 w-8 text-yeon-orange" />,
-      title: "Alcance Global",
-      description: "Distribua sua música em todas as plataformas principais de streaming ao redor do mundo."
+      icon: <Globe className="h-8 w-8 text-yeon-purple" />,
+      title: "Fãs e Mercado",
+      description: "Aproxime-se de quem importa. Apresente sua música, engaje fãs e gerencie conexões com visão e segurança."
     },
     {
       icon: <DollarSign className="h-8 w-8 text-yeon-orange" />,
       title: "Monetização Direta",
-      description: "Maximize seus ganhos com taxas transparentes e pagamentos diretos para sua conta."
+      description: "Venda direto pros fãs, crie campanhas e descubra GIGs. Receita justa, visível e no seu controle."
     }
   ];
 

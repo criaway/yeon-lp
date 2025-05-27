@@ -12,10 +12,10 @@ const FeaturesSection: React.FC = () => {
     <section className="py-24 bg-yeon-dark-bg">
       <div className="container px-4">
         <h2 className="text-3xl md:text-4xl font-semibold text-center mb-6">
-          Ferramentas Poderosas para Artistas Ambiciosos
+         Tudo que você precisa pra botar pra F#
         </h2>
         <p className="text-white/70 text-center mb-16 max-w-2xl mx-auto">
-          Tudo que você precisa para gerenciar sua carreira musical, maximizar seus ganhos e conectar-se com seu público.
+          Desenvolvemos um arsenal de ferramentas fodas, pensadas especificamente para as necessidades do artista que busca crescimento e autonomia.
         </p>
         
         <Tabs defaultValue="artists" className="w-full">

@@ -14,8 +14,8 @@ const FinalCTASection: React.FC = () => {
           Gerencie sua carreira musical, distribua seu trabalho globalmente e maximize seus ganhos em uma única plataforma.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="bg-yeon-orange hover:bg-yeon-dark-orange text-white px-8 py-6 text-lg" asChild>
-            <Link to="/tools">
+          <Button size="lg" className="bg-yeon-purple hover:bg-yeon-dark-purple text-white px-8 py-6 text-lg" asChild>
+            <Link to="/waitlist">
               Comece Agora
             </Link>
           </Button>

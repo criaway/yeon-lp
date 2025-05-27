@@ -36,12 +36,12 @@ const HeroSection: React.FC = () => {
         </h1>
         
         <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-8 animate-fade-in">
-          Gerencie sua carreira musical, distribua seu trabalho globalmente e maximize seus ganhos em uma única plataforma.
+          Gerencie sua carreira musical, maximize seus ganhos e conecte-se com seus fãs em uma plataforma completa pra botar ritmo na sua carreira.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 mt-4 animate-fade-in">
-          <Button size="lg" className="bg-yeon-orange hover:bg-yeon-dark-orange text-white font-medium px-8 py-6 text-lg" asChild>
-            <RouterLink to="/tools">
+          <Button size="lg" className="bg-yeon-purple hover:bg-yeon-dark-purple text-white font-medium px-8 py-6 text-lg" asChild>
+            <RouterLink to="/waitlist">
               Comece Agora
             </RouterLink>
           </Button>

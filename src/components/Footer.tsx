@@ -19,8 +19,7 @@ const Footer: React.FC = () => {
               <Logo />
             </div>
             <p className="text-white/70 text-sm mb-4">
-              Revolucionando a maneira como artistas independentes gerenciam suas carreiras e 
-              maximizam seus ganhos em streaming.
+              Aceleradora de carreiras para artistas independentes.
             </p>
             <div className="flex space-x-4">
               <a href="https://instagram.com/yeon.live" target="_blank" rel="noopener noreferrer" 
