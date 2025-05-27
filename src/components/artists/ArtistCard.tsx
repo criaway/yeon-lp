@@ -23,13 +23,13 @@ const ArtistCard: React.FC<ArtistCardProps> = ({ artist }) => {
 
   return (
     <Card className="bg-[#2A2A2A] rounded-lg overflow-hidden border border-white/10 hover:border-white/30 transition-all flex flex-col">
-      <div className="relative h-48 overflow-hidden">
+      {/* <div className="relative h-48 overflow-hidden">
         <img
           src={artist.image}
           alt={artist.name}
           className="w-full h-full object-cover"
         />
-      </div>
+      </div> */}
 
       <CardContent className="p-0 flex-1">
         <div className="backdrop-blur-md bg-black/30 border-t border-white/10 p-4 h-full">
