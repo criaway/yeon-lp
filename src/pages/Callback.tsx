@@ -20,10 +20,17 @@ const Callback = () => {
     }
 
     if (code && !requestedRef.current) {
-      requestedRef.current = true; // Block further requests in this session
+      requestedRef.current = true;
       const codeKey = `spotify_code_used_${code}`;
       if (sessionStorage.getItem(codeKey)) {
-        navigate('/tools?error=' + encodeURIComponent('Código de autorização já utilizado.'));
+        // Already used this code, just proceed to tools if we have a roast/token
+        const roast = localStorage.getItem('spotify_roast');
+        const token = localStorage.getItem('spotify_access_token');
+        if (roast && token) {
+          navigate('/tools?token=' + token);
+        } else {
+          navigate('/tools?error=' + encodeURIComponent('Código de autorização já utilizado.'));
+        }
         return;
       }
       sessionStorage.setItem(codeKey, 'true');
@@ -51,6 +58,15 @@ const Callback = () => {
                   throw new Error(roastData.error || 'No roast received');
                 }
               });
+          } else if (data.error === 'Invalid authorization code' || data.error === 'invalid_grant') {
+            // If we already have a roast/token, just proceed
+            const roast = localStorage.getItem('spotify_roast');
+            const token = localStorage.getItem('spotify_access_token');
+            if (roast && token) {
+              navigate('/tools?token=' + token);
+            } else {
+              throw new Error('Código de autorização já utilizado ou inválido.');
+            }
           } else {
             throw new Error(data.error || 'No access token received');
           }
