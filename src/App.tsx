@@ -10,6 +10,7 @@ import Artists from "./pages/Artists";
 import MusicTools from "./pages/Tools"; // Updated component name
 import NotFound from "./pages/NotFound";
 import WaitlistPage from "./pages/Waitlist";
+import Callback from "./pages/Callback";
 
 // Create a new QueryClient instance within the component to ensure proper React context
 const App: React.FC = () => {
@@ -30,6 +31,7 @@ const App: React.FC = () => {
               {/* Updated component name */}
               <Route path="/artists" element={<Artists />} />
               <Route path="/waitlist" element={<WaitlistPage />} />
+              <Route path="/callback" element={<Callback />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </BrowserRouter>

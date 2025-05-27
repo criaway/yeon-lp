@@ -19,6 +19,12 @@ const MusicTools: React.FC = () => {
       left: 0,
       behavior: "smooth",
     });
+
+    const roast = localStorage.getItem('spotify_roast');
+
+    if (roast) {
+      setActiveTab('spotify')
+    }
   }, []);
 
   return (
@@ -84,7 +90,7 @@ const MusicTools: React.FC = () => {
             </TabsContent> */}
 
             <TabsContent value="spotify" className="mt-4">
-              <SpotifyRoaster />
+              <SpotifyRoaster onTabChange={setActiveTab} />
             </TabsContent>
           </Tabs>
         </div>
