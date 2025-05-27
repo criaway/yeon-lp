@@ -15,11 +15,10 @@ const Callback = () => {
     // Check for a general error param first
     if (errorParam) {
       const decodedError = decodeURIComponent(errorParam);
-      console.error("Error from URL:", decodedError);
+      console.error("Error from URL params:", decodedError);
       setError(decodedError);
       setLoading(false);
-      // Navigate to tools, error will be read there
-      navigate('/tools?error=' + encodeURIComponent(decodedError));
+      // No need to navigate here, finally block will handle it
       return;
     }
 
@@ -40,13 +39,12 @@ const Callback = () => {
         const storedToken = localStorage.getItem('spotify_access_token');
 
         if (storedRoast && storedToken) {
-          console.log('Found existing roast, navigating to tools.');
-          navigate('/tools?token=' + storedToken); // Navigate with token to trigger roast display
+          console.log('Found existing roast, will navigate to tools.');
+          // Navigation will happen in finally block
         } else {
-          // Code used, but no roast found. This is unexpected, navigate with error.
+          // Code used, but no roast found. This is unexpected, set error.
           console.error('Code already used, but no roast found.');
           setError('Código de autorização já utilizado ou inválido.');
-          navigate('/tools?error=' + encodeURIComponent('Código de autorização já utilizado ou inválido.'));
         }
         setLoading(false);
         return; // Stop here
@@ -73,7 +71,6 @@ const Callback = () => {
                      const storedToken = localStorage.getItem('spotify_access_token');
                      if (storedRoast && storedToken) {
                          console.log('Received invalid_grant but found existing roast. Proceeding.');
-                         // Don't throw, let the finally block handle navigation
                          return { access_token: storedToken, fromInvalidGrant: true }; // Return token to proceed, add flag
                      }
                  }
@@ -84,9 +81,13 @@ const Callback = () => {
           return res.json();
         })
         .then((data) => {
-          // If we got here from an invalid_grant but had a stored token, navigate directly
+          // If we got here from an invalid_grant but had a stored token, set roast from storage and return
           if (data.fromInvalidGrant) {
-             return; // Exit this chain, navigation happens in finally
+             const storedRoast = localStorage.getItem('spotify_roast');
+             if (storedRoast) {
+                 localStorage.setItem('spotify_roast', storedRoast); // Re-set to ensure it's fresh (optional)
+             }
+             return; // Exit this chain, navigation and final state handling happen in finally
           }
 
           if (data.access_token) {
@@ -121,12 +122,8 @@ const Callback = () => {
         })
         .catch((err) => {
           console.error('Error in callback flow:', err);
-          // Only set a user-facing error if we don't already have a roast/token
-          const storedRoast = localStorage.getItem('spotify_roast');
-          const storedToken = localStorage.getItem('spotify_access_token');
-           if (!storedRoast || !storedToken) {
-               setError('Falha na autenticação. Por favor, tente novamente.');
-           }
+          // Set a user-facing error
+          setError(err instanceof Error ? err.message : 'Ocorreu um erro desconhecido durante a autenticação.');
           // Navigation happens in finally block
         })
         .finally(() => {
@@ -134,15 +131,19 @@ const Callback = () => {
            // Always navigate to tools page after process, even on error,
            // so the tools page can display the error or existing roast.
            const finalRoast = localStorage.getItem('spotify_roast');
-           const finalToken = localStorage.getItem('spotify_access_token');
+           const finalToken = localStorage.getItem('spotify_access_token'); // Also check for token just in case
 
            if (finalRoast && finalToken) {
+                console.log('Navigating to tools with roast.');
+                // Navigate with token so SpotifyRoaster can read it (even if not used, good practice)
                 navigate('/tools?token=' + finalToken);
            } else if (error) {
-                // Navigate with error if no roast/token was found and there was an error
+                console.log('Navigating to tools with error:', error);
+                // Navigate with the specific error message
                 navigate('/tools?error=' + encodeURIComponent(error));
            } else {
-                // Catch-all if no roast/token and no explicit error was set
+                console.log('Navigating to tools with a generic error.');
+                // Fallback to generic error if no roast/token and no explicit error was set
                  navigate('/tools?error=' + encodeURIComponent('Ocorreu um erro desconhecido durante a autenticação.'));
            }
         });
@@ -153,7 +154,7 @@ const Callback = () => {
         setLoading(false);
     }
 
-  }, [navigate]); // Depend on navigate
+  }, [navigate, error]); // Depend on navigate and error state for the finally block to see the latest error state
 
   return (
     <div className="flex items-center justify-center min-h-screen">
