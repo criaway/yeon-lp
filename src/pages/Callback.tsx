@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Callback = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const requestedRef = useRef(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -18,25 +19,19 @@ const Callback = () => {
       return;
     }
 
-    // Prevent double use of the same code
-    if (code) {
+    if (code && !requestedRef.current) {
+      requestedRef.current = true; // Block further requests in this session
       const codeKey = `spotify_code_used_${code}`;
       if (sessionStorage.getItem(codeKey)) {
-        // Already used this code, just redirect to tools
         navigate('/tools?error=' + encodeURIComponent('Código de autorização já utilizado.'));
         return;
       }
       sessionStorage.setItem(codeKey, 'true');
-
-      // Remove code from URL to prevent re-use on reload
       window.history.replaceState({}, document.title, window.location.pathname);
 
-      // Exchange code for access token
       fetch(`https://roast-my-spotify-eta.vercel.app/api/auth/callback?code=${code}`, {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
       })
         .then((res) => res.json())
         .then((data) => {
