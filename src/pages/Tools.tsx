@@ -89,9 +89,9 @@ const MusicTools: React.FC = () => {
               <ContractsSection />
             </TabsContent> */}
 
-            <TabsContent value="spotify" className="mt-4">
+            {/* <TabsContent value="spotify" className="mt-4">
               <SpotifyRoaster onTabChange={setActiveTab} />
-            </TabsContent>
+            </TabsContent> */}
           </Tabs>
         </div>
       </PageLayout>
