@@ -61,7 +61,7 @@ const MusicTools: React.FC = () => {
           >
             <div className="flex justify-center mb-6">
               <TabsList
-                className={`${isMobile ? "flex flex-wrap gap-2" : "grid grid-cols-2"} w-full max-w-2xl`}
+                className={`${isMobile ? "flex flex-wrap gap-2" : "grid grid-cols-1"} w-full max-w-lg`}
               >
                 <TabsTrigger
                   value="calculator"
@@ -72,12 +72,12 @@ const MusicTools: React.FC = () => {
                 {/* <TabsTrigger value="contracts" className={`${isMobile ? 'flex-1 min-w-[120px]' : ''}`}>
                   Modelos de Contratos
                 </TabsTrigger> */}
-                <TabsTrigger
+                {/* <TabsTrigger
                   value="spotify"
                   className={`${isMobile ? "flex-1 min-w-[120px]" : ""}`}
                 >
                   Frite meu Spotify
-                </TabsTrigger>
+                </TabsTrigger> */}
               </TabsList>
             </div>
 
