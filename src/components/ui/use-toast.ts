@@ -1,4 +1,3 @@
-
 import { useToast, toast } from "@/hooks/use-toast";
 
 // Enhanced toast for more engaging notifications
@@ -10,7 +9,7 @@ const enhancedToast = {
       variant: "default",
     });
   },
-  
+
   error: (message: string, title?: string) => {
     return toast({
       title: title || "Oops! 🎸",
@@ -18,14 +17,14 @@ const enhancedToast = {
       variant: "destructive",
     });
   },
-  
+
   info: (message: string, title?: string) => {
     return toast({
       title: title || "Listen up! 🎧",
       description: message,
       variant: "default",
     });
-  }
+  },
 };
 
 export { useToast, enhancedToast as toast };

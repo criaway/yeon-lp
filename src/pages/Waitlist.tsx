@@ -1,7 +1,9 @@
-import { Waitlist } from '@clerk/clerk-react'
+import { Waitlist } from "@clerk/clerk-react";
 
 export default function WaitlistPage() {
-  return <div className='flex justify-center items-center h-screen'>
-    <Waitlist />
-  </div>
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <Waitlist />
+    </div>
+  );
 }

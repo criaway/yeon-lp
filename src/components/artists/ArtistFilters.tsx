@@ -1,8 +1,13 @@
-
-import React from 'react';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Label } from '@/components/ui/label';
+import React from "react";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
 
 interface ArtistFiltersProps {
   genres: string[];
@@ -21,7 +26,7 @@ const ArtistFilters: React.FC<ArtistFiltersProps> = ({
   setSelectedGenres,
   selectedLocation,
   setSelectedLocation,
-  onClose
+  onClose,
 }) => {
   const handleGenreChange = (genre: string, checked: boolean | string) => {
     if (checked) {
@@ -33,7 +38,7 @@ const ArtistFilters: React.FC<ArtistFiltersProps> = ({
 
   const handleClearFilters = () => {
     setSelectedGenres([]);
-    setSelectedLocation('all_cities');
+    setSelectedLocation("all_cities");
     if (onClose) {
       onClose();
     }
@@ -47,12 +52,12 @@ const ArtistFilters: React.FC<ArtistFiltersProps> = ({
         <div className="space-y-2 max-h-64 overflow-y-auto pr-2">
           {genres.map((genre) => (
             <div key={genre} className="flex items-center space-x-2">
-              <Checkbox 
-                id={`genre-${genre}`} 
+              <Checkbox
+                id={`genre-${genre}`}
                 checked={selectedGenres.includes(genre)}
                 onCheckedChange={(checked) => handleGenreChange(genre, checked)}
               />
-              <Label 
+              <Label
                 htmlFor={`genre-${genre}`}
                 className="text-sm text-gray-300 cursor-pointer"
               >
@@ -62,14 +67,11 @@ const ArtistFilters: React.FC<ArtistFiltersProps> = ({
           ))}
         </div>
       </div>
-      
+
       {/* Location filter */}
       <div className="space-y-3">
         <h4 className="text-sm font-medium text-white">Localização</h4>
-        <Select 
-          value={selectedLocation} 
-          onValueChange={setSelectedLocation}
-        >
+        <Select value={selectedLocation} onValueChange={setSelectedLocation}>
           <SelectTrigger className="bg-[#222] border-white/10 text-white">
             <SelectValue placeholder="Todas as cidades" />
           </SelectTrigger>
@@ -83,9 +85,9 @@ const ArtistFilters: React.FC<ArtistFiltersProps> = ({
           </SelectContent>
         </Select>
       </div>
-      
+
       {/* Clear filters button */}
-      {(selectedGenres.length > 0 || selectedLocation !== 'all_cities') && (
+      {(selectedGenres.length > 0 || selectedLocation !== "all_cities") && (
         <button
           onClick={handleClearFilters}
           className="text-sm text-yeon-orange hover:text-yeon-dark-orange underline"

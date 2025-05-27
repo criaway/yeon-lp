@@ -1,10 +1,15 @@
-
-import React, { useState } from 'react';
-import { useLanguage } from '@/context/LanguageContext';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check } from 'lucide-react';
-import { Switch } from '@/components/ui/switch';
+import React, { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Check } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
 
 interface PlanFeature {
   included: boolean;
@@ -24,7 +29,7 @@ interface PricingPlan {
 const PricingSection: React.FC = () => {
   const { t } = useLanguage();
   const [billingAnnually, setBillingAnnually] = useState(true);
-  
+
   const plans: PricingPlan[] = [
     {
       name: "Básico",
@@ -39,7 +44,7 @@ const PricingSection: React.FC = () => {
         { included: false, text: "Agendamento de lançamentos" },
         { included: false, text: "Suporte prioritário" },
       ],
-      ctaText: "Comece Grátis"
+      ctaText: "Comece Grátis",
     },
     {
       name: "Profissional",
@@ -55,7 +60,7 @@ const PricingSection: React.FC = () => {
         { included: true, text: "Suporte prioritário" },
       ],
       ctaText: "Escolher Plano",
-      popular: true
+      popular: true,
     },
     {
       name: "Etiqueta",
@@ -70,8 +75,8 @@ const PricingSection: React.FC = () => {
         { included: true, text: "Agendamento avançado" },
         { included: true, text: "Suporte VIP 24/7" },
       ],
-      ctaText: "Contato Personalizado"
-    }
+      ctaText: "Contato Personalizado",
+    },
   ];
 
   return (
@@ -81,30 +86,37 @@ const PricingSection: React.FC = () => {
           Planos que Crescem com Você
         </h2>
         <p className="text-white/70 text-center max-w-2xl mx-auto mb-10">
-          Escolha o plano ideal para o seu momento atual. Mude a qualquer momento conforme sua carreira evolui.
+          Escolha o plano ideal para o seu momento atual. Mude a qualquer
+          momento conforme sua carreira evolui.
         </p>
-        
+
         {/* Billing toggle */}
         <div className="flex items-center justify-center gap-4 mb-12">
-          <span className={`text-sm ${!billingAnnually ? 'text-white' : 'text-white/60'}`}>Mensal</span>
+          <span
+            className={`text-sm ${!billingAnnually ? "text-white" : "text-white/60"}`}
+          >
+            Mensal
+          </span>
           <Switch
             checked={billingAnnually}
             onCheckedChange={setBillingAnnually}
           />
-          <span className={`text-sm flex items-center gap-2 ${billingAnnually ? 'text-white' : 'text-white/60'}`}>
+          <span
+            className={`text-sm flex items-center gap-2 ${billingAnnually ? "text-white" : "text-white/60"}`}
+          >
             Anual
             <span className="bg-yeon-orange/20 text-yeon-orange text-xs px-2 py-0.5 rounded-full">
               Economize 20%
             </span>
           </span>
         </div>
-        
+
         {/* Pricing cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
           {plans.map((plan, index) => (
-            <Card 
-              key={index} 
-              className={`bg-yeon-card-bg border-white/5 relative ${plan.popular ? 'md:scale-105 shadow-lg shadow-yeon-orange/5 border-yeon-orange/20 z-10' : ''}`}
+            <Card
+              key={index}
+              className={`bg-yeon-card-bg border-white/5 relative ${plan.popular ? "md:scale-105 shadow-lg shadow-yeon-orange/5 border-yeon-orange/20 z-10" : ""}`}
             >
               {plan.popular && (
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yeon-orange text-white px-4 py-1 rounded-full text-sm font-medium">
@@ -112,16 +124,21 @@ const PricingSection: React.FC = () => {
                 </div>
               )}
               <CardHeader>
-                <CardTitle className="text-2xl font-semibold text-center">{plan.name}</CardTitle>
+                <CardTitle className="text-2xl font-semibold text-center">
+                  {plan.name}
+                </CardTitle>
                 <div className="text-center mt-4">
                   <div className="flex items-center justify-center">
                     <span className="text-3xl font-semibold">
-                      R$ {billingAnnually ? plan.annualPrice : plan.monthlyPrice}
+                      R${" "}
+                      {billingAnnually ? plan.annualPrice : plan.monthlyPrice}
                     </span>
                     <span className="text-white/60 ml-1">/mês</span>
                   </div>
                   <p className="text-sm text-white/60 mt-2 mb-4">
-                    {billingAnnually ? 'Cobrado anualmente' : 'Cobrado mensalmente'}
+                    {billingAnnually
+                      ? "Cobrado anualmente"
+                      : "Cobrado mensalmente"}
                   </p>
                   <p className="text-sm text-white/80">{plan.description}</p>
                 </div>
@@ -129,18 +146,24 @@ const PricingSection: React.FC = () => {
               <CardContent className="space-y-4">
                 {plan.features.map((feature, idx) => (
                   <div key={idx} className="flex items-start gap-3">
-                    <div className={`rounded-full p-1 ${feature.included ? 'text-yeon-orange bg-yeon-orange/10' : 'text-white/30 bg-white/5'}`}>
+                    <div
+                      className={`rounded-full p-1 ${feature.included ? "text-yeon-orange bg-yeon-orange/10" : "text-white/30 bg-white/5"}`}
+                    >
                       <Check className="h-4 w-4" />
                     </div>
-                    <span className={feature.included ? 'text-white/80' : 'text-white/40'}>
+                    <span
+                      className={
+                        feature.included ? "text-white/80" : "text-white/40"
+                      }
+                    >
                       {feature.text}
                     </span>
                   </div>
                 ))}
               </CardContent>
               <CardFooter>
-                <Button 
-                  className={`w-full py-6 ${plan.popular ? 'bg-yeon-orange hover:bg-yeon-dark-orange' : 'bg-white/10 hover:bg-white/20'}`}
+                <Button
+                  className={`w-full py-6 ${plan.popular ? "bg-yeon-orange hover:bg-yeon-dark-orange" : "bg-white/10 hover:bg-white/20"}`}
                 >
                   {plan.ctaText}
                 </Button>

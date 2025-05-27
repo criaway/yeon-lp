@@ -1,7 +1,6 @@
-
-import React from 'react';
-import { useLanguage } from '@/context/LanguageContext';
-import { Upload, BarChart, CreditCard } from 'lucide-react';
+import React from "react";
+import { useLanguage } from "@/context/LanguageContext";
+import { Upload, BarChart, CreditCard } from "lucide-react";
 
 interface StepItemProps {
   number: number;
@@ -10,7 +9,12 @@ interface StepItemProps {
   icon: React.ReactNode;
 }
 
-const StepItem: React.FC<StepItemProps> = ({ number, title, description, icon }) => {
+const StepItem: React.FC<StepItemProps> = ({
+  number,
+  title,
+  description,
+  icon,
+}) => {
   return (
     <div className="flex flex-col items-center text-center">
       <div className="w-16 h-16 rounded-full bg-yeon-orange/20 flex items-center justify-center mb-4 relative">
@@ -27,26 +31,29 @@ const StepItem: React.FC<StepItemProps> = ({ number, title, description, icon })
 
 const HowItWorksSection: React.FC = () => {
   const { t } = useLanguage();
-  
+
   const steps = [
     {
       number: 1,
       title: "Faça o Upload da Sua Música",
-      description: "Envie suas faixas em alta qualidade diretamente pela nossa plataforma.",
-      icon: <Upload className="h-6 w-6 text-yeon-orange" />
+      description:
+        "Envie suas faixas em alta qualidade diretamente pela nossa plataforma.",
+      icon: <Upload className="h-6 w-6 text-yeon-orange" />,
     },
     {
       number: 2,
       title: "Acompanhe Seu Desempenho",
-      description: "Monitore streams, receitas e crescimento de público em tempo real.",
-      icon: <BarChart className="h-6 w-6 text-yeon-orange" />
+      description:
+        "Monitore streams, receitas e crescimento de público em tempo real.",
+      icon: <BarChart className="h-6 w-6 text-yeon-orange" />,
     },
     {
       number: 3,
       title: "Receba Seus Ganhos",
-      description: "Pagamentos regulares e transparentes diretamente na sua conta bancária.",
-      icon: <CreditCard className="h-6 w-6 text-yeon-orange" />
-    }
+      description:
+        "Pagamentos regulares e transparentes diretamente na sua conta bancária.",
+      icon: <CreditCard className="h-6 w-6 text-yeon-orange" />,
+    },
   ];
 
   return (
@@ -56,9 +63,10 @@ const HowItWorksSection: React.FC = () => {
           Como Funciona
         </h2>
         <p className="text-white/70 text-center max-w-2xl mx-auto mb-16">
-          Três passos simples para começar a distribuir sua música e acompanhar seus resultados
+          Três passos simples para começar a distribuir sua música e acompanhar
+          seus resultados
         </p>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
           {steps.map((step, index) => (
             <React.Fragment key={index}>

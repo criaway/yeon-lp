@@ -1,7 +1,6 @@
-
-import React from 'react';
-import { Artist } from '@/pages/Artists';
-import ArtistCard from './ArtistCard';
+import React from "react";
+import { Artist } from "@/pages/Artists";
+import ArtistCard from "./ArtistCard";
 
 interface ArtistGridProps {
   artists: Artist[];
