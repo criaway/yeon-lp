@@ -200,7 +200,7 @@ const Contracts: React.FC = () => {
           ))}
         </div>
         
-        <div className="mt-12 bg-yeon-dark-purple/10 p-6 rounded-lg border border-yeon-purple/20">
+        <div className="mt-12 bg-yeon-dark-orange/10 p-6 rounded-lg border border-yeon-orange/20">
           <div className="flex flex-col md:flex-row gap-6">
             <div className="md:w-2/3">
               <h2 className="text-2xl font-semibold mb-4">Consultoria Jurídica Especializada</h2>
@@ -215,8 +215,8 @@ const Contracts: React.FC = () => {
               </Button>
             </div>
             <div className="md:w-1/3 flex items-center justify-center">
-              <div className="bg-gradient-to-br from-yeon-purple/20 to-transparent p-6 rounded-full">
-                <File className="h-16 w-16 text-yeon-purple" />
+              <div className="bg-gradient-to-br from-yeon-orange/20 to-transparent p-6 rounded-full">
+                <File className="h-16 w-16 text-yeon-orange" />
               </div>
             </div>
           </div>

@@ -28,7 +28,7 @@ const FanFeatures: React.FC = () => {
         <FeatureItem 
           key={index} 
           {...feature} 
-          size={index === 0 || index === 3 ? 'large' : 'small'}
+          size={'small'}
         />
       ))}
     </div>

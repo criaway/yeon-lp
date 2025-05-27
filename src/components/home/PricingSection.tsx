@@ -93,7 +93,7 @@ const PricingSection: React.FC = () => {
           />
           <span className={`text-sm flex items-center gap-2 ${billingAnnually ? 'text-white' : 'text-white/60'}`}>
             Anual
-            <span className="bg-yeon-purple/20 text-yeon-purple text-xs px-2 py-0.5 rounded-full">
+            <span className="bg-yeon-orange/20 text-yeon-orange text-xs px-2 py-0.5 rounded-full">
               Economize 20%
             </span>
           </span>
@@ -104,10 +104,10 @@ const PricingSection: React.FC = () => {
           {plans.map((plan, index) => (
             <Card 
               key={index} 
-              className={`bg-yeon-card-bg border-white/5 relative ${plan.popular ? 'md:scale-105 shadow-lg shadow-yeon-purple/5 border-yeon-purple/20 z-10' : ''}`}
+              className={`bg-yeon-card-bg border-white/5 relative ${plan.popular ? 'md:scale-105 shadow-lg shadow-yeon-orange/5 border-yeon-orange/20 z-10' : ''}`}
             >
               {plan.popular && (
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yeon-purple text-white px-4 py-1 rounded-full text-sm font-medium">
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yeon-orange text-white px-4 py-1 rounded-full text-sm font-medium">
                   Mais Popular
                 </div>
               )}
@@ -129,7 +129,7 @@ const PricingSection: React.FC = () => {
               <CardContent className="space-y-4">
                 {plan.features.map((feature, idx) => (
                   <div key={idx} className="flex items-start gap-3">
-                    <div className={`rounded-full p-1 ${feature.included ? 'text-yeon-purple bg-yeon-purple/10' : 'text-white/30 bg-white/5'}`}>
+                    <div className={`rounded-full p-1 ${feature.included ? 'text-yeon-orange bg-yeon-orange/10' : 'text-white/30 bg-white/5'}`}>
                       <Check className="h-4 w-4" />
                     </div>
                     <span className={feature.included ? 'text-white/80' : 'text-white/40'}>
@@ -140,7 +140,7 @@ const PricingSection: React.FC = () => {
               </CardContent>
               <CardFooter>
                 <Button 
-                  className={`w-full py-6 ${plan.popular ? 'bg-yeon-purple hover:bg-yeon-dark-purple' : 'bg-white/10 hover:bg-white/20'}`}
+                  className={`w-full py-6 ${plan.popular ? 'bg-yeon-orange hover:bg-yeon-dark-orange' : 'bg-white/10 hover:bg-white/20'}`}
                 >
                   {plan.ctaText}
                 </Button>

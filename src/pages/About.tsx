@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLanguage } from '@/context/LanguageContext';
 import PageLayout from '@/components/PageLayout';
@@ -16,70 +16,36 @@ const AboutContent: React.FC = () => {
   // Team members data - 10 members total
   const teamMembers = [
     {
-      name: "Carlos Silva",
-      role: "Fundador & CEO",
-      bio: "Músico e desenvolvedor com mais de 10 anos de experiência na indústria musical brasileira.",
-      imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3" 
+      name: "Arthur Sena",
+      role: "Co-Fundador & Engenheiro de Software",
+      // bio: "Músico e desenvolvedor com mais de 10 anos de experiência na indústria musical brasileira.",
+      imageUrl: "https://media.licdn.com/dms/image/v2/D4D03AQE1yetxe1EJ6A/profile-displayphoto-shrink_800_800/B4DZSisUDOH0Ac-/0/1737896313582?e=1753920000&v=beta&t=p7HTP_dpvS4ePdc7rDXXs-I1QkT-Nc3ICupgx8L3k3I"
     },
     {
-      name: "Ana Oliveira",
-      role: "Diretora de Tecnologia",
-      bio: "Especialista em desenvolvimento de produtos digitais para o mercado de entretenimento.",
-      imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3"
-    },
-    {
-      name: "Roberto Mendes",
-      role: "Diretor de Parcerias",
-      bio: "Ex-executivo de grandes gravadoras, especialista em negócios da indústria musical.",
-      imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3"
-    },
-    {
-      name: "Juliana Costa",
+      name: "Gustavo Henrique dos Santos",
       role: "Designer de Produto",
-      bio: "Especialista em UX/UI com foco em experiências digitais para músicos e fãs.",
-      imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1588&auto=format&fit=crop&ixlib=rb-4.0.3"
+      // bio: "Especialista em UX/UI com foco em experiências digitais para músicos e fãs.",
+      imageUrl: "https://media.licdn.com/dms/image/v2/D4D03AQFADVZwL1_BMw/profile-displayphoto-shrink_800_800/B4DZSUS6MJG8Ag-/0/1737654773096?e=1753920000&v=beta&t=Ne-HtRJoFRHRwxYwVANi1dwUxoKNH-A0NwgBPCNhjFg"
     },
     {
-      name: "Lucas Santos",
-      role: "Desenvolvedor Full Stack",
-      bio: "Engenheiro de software apaixonado por música e novas tecnologias.",
-      imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3"
+      name: "Lucas Andrade",
+      role: "Co-Fundador & Engenheiro de Software",
+      // bio: "Engenheiro de software apaixonado por música e novas tecnologias.",
+      imageUrl: "https://media.licdn.com/dms/image/v2/D4D03AQEDGfcmEszDTA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730422833926?e=1753920000&v=beta&t=OodGC5QbBAShA368VMx5eDAhoNetvQLHZfYf-vZ-AzM"
     },
-    {
-      name: "Mariana Alves",
-      role: "Growth Specialist",
-      bio: "Especialista em marketing digital para artistas independentes.",
-      imageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1588&auto=format&fit=crop&ixlib=rb-4.0.3"
-    },
-    {
-      name: "Paulo Ferreira",
-      role: "Analista de Dados",
-      bio: "Especialista em análise de dados e métricas para a indústria musical.",
-      imageUrl: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3"
-    },
-    {
-      name: "Fernanda Lima",
-      role: "Gestora de Comunidade",
-      bio: "Responsável pelo relacionamento com artistas e fãs na plataforma.",
-      imageUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1522&auto=format&fit=crop&ixlib=rb-4.0.3"
-    },
-    {
-      name: "Ricardo Gomes",
-      role: "Diretor Financeiro",
-      bio: "Especialista em modelos de negócio e estratégias financeiras para startups.",
-      imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3"
-    },
-    {
-      name: "Camila Torres",
-      role: "Especialista em Conteúdo",
-      bio: "Jornalista especializada em música independente e novas tendências.",
-      imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3"
-    }
   ];
   
   // Show only 6 members initially, all if showAllTeam is true
   const displayedMembers = showAllTeam ? teamMembers : teamMembers.slice(0, 6);
   
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
+  }, []);
+
   return <main className="max-w-full mx-auto">
       {/* Hero Section - Quem Somos */}
       <section className="relative min-h-[60vh] flex items-center justify-center mb-16 bg-gradient-to-br from-[#1A1A1A] to-yeon-dark-bg overflow-hidden">
@@ -88,8 +54,8 @@ const AboutContent: React.FC = () => {
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#FF3C27_1px,transparent_1px)] [background-size:20px_20px]"></div>
         </div>
         
-        <div className="absolute top-0 right-0 w-64 h-64 bg-yeon-purple/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-yeon-purple/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-yeon-orange/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-yeon-orange/5 rounded-full blur-3xl"></div>
         
         <div className="container py-16 relative z-10 px-[64px] rounded-2xl">
           <div className="text-center mb-12">
@@ -111,12 +77,12 @@ const AboutContent: React.FC = () => {
           {/* Mission and Vision Cards */}
           <div className="grid md:grid-cols-2 gap-8 mt-12">
             {/* Mission Card */}
-            <Card className="bg-[#2A2A2A]/80 backdrop-blur-sm border border-white/10 hover:border-yeon-purple/50 hover:transform hover:scale-[1.02] transition-all duration-300 overflow-hidden shadow-lg animate-fade-in" style={{
+            <Card className="bg-[#2A2A2A]/80 backdrop-blur-sm border border-white/10 hover:border-yeon-orange/50 hover:transform hover:scale-[1.02] transition-all duration-300 overflow-hidden shadow-lg animate-fade-in" style={{
             animationDelay: '0.3s'
           }}>
               
               <CardHeader>
-                <CardTitle className="text-2xl text-yeon-purple flex items-center">
+                <CardTitle className="text-2xl text-yeon-orange flex items-center">
                   
                   {t('about.missionTitle')}
                 </CardTitle>
@@ -129,12 +95,12 @@ const AboutContent: React.FC = () => {
             </Card>
             
             {/* Vision Card */}
-            <Card className="bg-[#2A2A2A]/80 backdrop-blur-sm border border-white/10 hover:border-yeon-purple/50 hover:transform hover:scale-[1.02] transition-all duration-300 overflow-hidden shadow-lg animate-fade-in" style={{
+            <Card className="bg-[#2A2A2A]/80 backdrop-blur-sm border border-white/10 hover:border-yeon-orange/50 hover:transform hover:scale-[1.02] transition-all duration-300 overflow-hidden shadow-lg animate-fade-in" style={{
             animationDelay: '0.4s'
           }}>
               
               <CardHeader>
-                <CardTitle className="text-2xl text-yeon-purple flex items-center">
+                <CardTitle className="text-2xl text-yeon-orange flex items-center">
                   
                   {t('about.visionTitle')}
                 </CardTitle>
@@ -156,8 +122,8 @@ const AboutContent: React.FC = () => {
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#FF3C27_1px,transparent_1px)] [background-size:20px_20px]"></div>
         </div>
         
-        <div className="absolute top-0 left-0 w-64 h-64 bg-yeon-purple/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-yeon-purple/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-64 h-64 bg-yeon-orange/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-yeon-orange/5 rounded-full blur-3xl"></div>
         
         <div className="container py-16 relative z-10 px-[64px] rounded-2xl">
           <div className="text-center mb-12">
@@ -171,9 +137,9 @@ const AboutContent: React.FC = () => {
           
           {/* What We Do Cards */}
           <div className="grid md:grid-cols-2 gap-8 mt-12">
-            <Card className="bg-[#2A2A2A]/80 backdrop-blur-sm border border-white/10 hover:border-yeon-purple/50 hover:transform hover:scale-[1.02] transition-all duration-300 overflow-hidden shadow-lg animate-fade-in" style={{animationDelay: '0.1s'}}>
+            <Card className="bg-[#2A2A2A]/80 backdrop-blur-sm border border-white/10 hover:border-yeon-orange/50 hover:transform hover:scale-[1.02] transition-all duration-300 overflow-hidden shadow-lg animate-fade-in" style={{animationDelay: '0.1s'}}>
               <CardHeader>
-                <CardTitle className="text-2xl text-yeon-purple flex items-center gap-2">
+                <CardTitle className="text-2xl text-yeon-orange flex items-center gap-2">
                   <Users className="h-5 w-5" />
                   Capturar e engajar fãs
                 </CardTitle>
@@ -185,9 +151,9 @@ const AboutContent: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="bg-[#2A2A2A]/80 backdrop-blur-sm border border-white/10 hover:border-yeon-purple/50 hover:transform hover:scale-[1.02] transition-all duration-300 overflow-hidden shadow-lg animate-fade-in" style={{animationDelay: '0.2s'}}>
+            <Card className="bg-[#2A2A2A]/80 backdrop-blur-sm border border-white/10 hover:border-yeon-orange/50 hover:transform hover:scale-[1.02] transition-all duration-300 overflow-hidden shadow-lg animate-fade-in" style={{animationDelay: '0.2s'}}>
               <CardHeader>
-                <CardTitle className="text-2xl text-yeon-purple flex items-center gap-2">
+                <CardTitle className="text-2xl text-yeon-orange flex items-center gap-2">
                   <Star className="h-5 w-5" />
                   Monetizar diretamente
                 </CardTitle>
@@ -199,9 +165,9 @@ const AboutContent: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="bg-[#2A2A2A]/80 backdrop-blur-sm border border-white/10 hover:border-yeon-purple/50 hover:transform hover:scale-[1.02] transition-all duration-300 overflow-hidden shadow-lg animate-fade-in" style={{animationDelay: '0.3s'}}>
+            <Card className="bg-[#2A2A2A]/80 backdrop-blur-sm border border-white/10 hover:border-yeon-orange/50 hover:transform hover:scale-[1.02] transition-all duration-300 overflow-hidden shadow-lg animate-fade-in" style={{animationDelay: '0.3s'}}>
               <CardHeader>
-                <CardTitle className="text-2xl text-yeon-purple flex items-center gap-2">
+                <CardTitle className="text-2xl text-yeon-orange flex items-center gap-2">
                   <Rocket className="h-5 w-5" />
                   Analisar e Crescer
                 </CardTitle>
@@ -213,9 +179,9 @@ const AboutContent: React.FC = () => {
               </CardContent>
             </Card>
             
-            <Card className="bg-[#2A2A2A]/80 backdrop-blur-sm border border-white/10 hover:border-yeon-purple/50 hover:transform hover:scale-[1.02] transition-all duration-300 overflow-hidden shadow-lg animate-fade-in" style={{animationDelay: '0.4s'}}>
+            <Card className="bg-[#2A2A2A]/80 backdrop-blur-sm border border-white/10 hover:border-yeon-orange/50 hover:transform hover:scale-[1.02] transition-all duration-300 overflow-hidden shadow-lg animate-fade-in" style={{animationDelay: '0.4s'}}>
               <CardHeader>
-                <CardTitle className="text-2xl text-yeon-purple flex items-center gap-2">
+                <CardTitle className="text-2xl text-yeon-orange flex items-center gap-2">
                   <Award className="h-5 w-5" />
                   Conectar-se a comunidade
                 </CardTitle>
@@ -239,8 +205,8 @@ const AboutContent: React.FC = () => {
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#FF3C27_1px,transparent_1px)] [background-size:20px_20px]"></div>
         </div>
         
-        <div className="absolute top-0 right-0 w-64 h-64 bg-yeon-purple/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-yeon-purple/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-yeon-orange/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-yeon-orange/5 rounded-full blur-3xl"></div>
         
         <div className="container py-16 relative z-10 px-4 md:px-[64px] rounded-2xl">
           <div className="text-center mb-12">
@@ -273,7 +239,7 @@ const AboutContent: React.FC = () => {
                 {/* Glassmorphic info box at bottom */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 backdrop-blur-md bg-black/30 border-t border-white/10">
                   <h3 className="text-xl font-semibold text-white mb-1">{member.name}</h3>
-                  <p className="text-yeon-purple font-medium mb-2">{member.role}</p>
+                  <p className="text-yeon-orange font-medium mb-2">{member.role}</p>
                   <p className="text-white/80 text-sm">{member.bio}</p>
                 </div>
               </div>
@@ -285,7 +251,7 @@ const AboutContent: React.FC = () => {
             <div className="flex justify-center mt-10">
               <Button 
                 variant="outline" 
-                className="border-yeon-purple text-yeon-purple hover:bg-yeon-purple/10"
+                className="border-yeon-orange text-yeon-orange hover:bg-yeon-orange/10"
                 onClick={() => setShowAllTeam(!showAllTeam)}
               >
                 {showAllTeam ? "Ver menos" : "Ver mais"}
@@ -298,9 +264,9 @@ const AboutContent: React.FC = () => {
       {/* Join Us Section - CTA */}
       <section className="container px-4 py-16 bg-gradient-to-br from-[#1A1A1A] to-yeon-dark-bg">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8 text-yeon-purple">{t('about.joinTitle')}</h2>
+          <h2 className="text-3xl font-bold mb-8 text-yeon-orange">{t('about.joinTitle')}</h2>
           
-          <Card className="bg-gradient-to-br from-[#2A2A2A] to-[#1A1A1A] border border-white/10 hover:border-yeon-purple/50 transition-all duration-300 shadow-lg">
+          <Card className="bg-gradient-to-br from-[#2A2A2A] to-[#1A1A1A] border border-white/10 hover:border-yeon-orange/50 transition-all duration-300 shadow-lg">
             <CardContent className="pt-6">
               <p className="mb-4 text-lg">
                 {t('about.join1')}
@@ -308,7 +274,7 @@ const AboutContent: React.FC = () => {
               <p className="mb-8 text-lg">
                 {t('about.join2')}
               </p>
-              <p className="text-center font-semibold text-yeon-purple text-xl mt-8">
+              <p className="text-center font-semibold text-yeon-orange text-xl mt-8">
                 {t('about.join3')}
               </p>
             </CardContent>

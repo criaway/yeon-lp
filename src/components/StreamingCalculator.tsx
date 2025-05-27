@@ -79,7 +79,7 @@ const StreamingCalculator: React.FC = () => {
           <Button 
             type="submit" 
             size="lg" 
-            className="bg-yeon-purple hover:bg-yeon-dark-purple text-white font-medium px-8"
+            className="bg-yeon-orange hover:bg-yeon-dark-orange text-white font-medium px-8"
           >
             {t('calculateButton')}
           </Button>

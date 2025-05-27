@@ -18,7 +18,7 @@ interface TestimonialProps {
 const StatItem: React.FC<StatItemProps> = ({ value, label }) => {
   return (
     <div className="flex flex-col items-center text-center">
-      <span className="text-4xl md:text-5xl font-semibold text-yeon-purple mb-2">{value}</span>
+      <span className="text-4xl md:text-5xl font-semibold text-yeon-orange mb-2">{value}</span>
       <span className="text-white/70">{label}</span>
     </div>
   );
@@ -49,9 +49,9 @@ const SocialProofSection: React.FC = () => {
   const { t } = useLanguage();
   
   const stats = [
-    { value: "1000+", label: "Artistas Ativos" },
-    { value: "5M+", label: "Fãs Alcançados" },
-    { value: "20+", label: "Plataformas Integradas" }
+    { value: "64", label: "Artistas Cadastrados" },
+    { value: "27", label: "Cidades" },
+    { value: "7", label: "Estados" }
   ];
   
   const testimonials = [
@@ -99,7 +99,7 @@ const SocialProofSection: React.FC = () => {
         </div>
         
         {/* Testimonials */}
-        <h2 className="text-3xl font-semibold text-center mb-12">O Que Nossos Artistas Dizem</h2>
+        {/* <h2 className="text-3xl font-semibold text-center mb-12">O Que Nossos Artistas Dizem</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {testimonials.map((testimonial, index) => (
             <Testimonial
@@ -107,10 +107,10 @@ const SocialProofSection: React.FC = () => {
               {...testimonial}
             />
           ))}
-        </div>
+        </div> */}
         
         {/* Partners */}
-        <div className="mt-20">
+        {/* <div className="mt-20">
           <h3 className="text-lg text-center text-white/50 mb-8">Integrações com as Principais Plataformas</h3>
           <div className="flex flex-wrap justify-center items-center gap-8">
             {partners.map((logo, index) => (
@@ -122,7 +122,7 @@ const SocialProofSection: React.FC = () => {
               />
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

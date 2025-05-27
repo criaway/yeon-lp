@@ -61,8 +61,8 @@ export default {
           foreground: "hsl(0 0% 98%)",
         },
         yeon: {
-          purple: "#FF3C27", // Keep accent color
-          "dark-purple": "#c82b1b", // Keep darker accent
+          orange: "#FF3C27", // Keep accent color
+          "dark-orange": "#c82b1b", // Keep darker accent
           "dark-bg": "#121212", // Darker background
           "darker-bg": "#0A0A0A", // Even darker background
           "card-bg": "#2A2A2A", // Darker card background
@@ -99,5 +99,6 @@ export default {
       },
     },
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

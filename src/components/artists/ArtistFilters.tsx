@@ -88,7 +88,7 @@ const ArtistFilters: React.FC<ArtistFiltersProps> = ({
       {(selectedGenres.length > 0 || selectedLocation !== 'all_cities') && (
         <button
           onClick={handleClearFilters}
-          className="text-sm text-yeon-purple hover:text-yeon-dark-purple underline"
+          className="text-sm text-yeon-orange hover:text-yeon-dark-orange underline"
         >
           Limpar filtros
         </button>

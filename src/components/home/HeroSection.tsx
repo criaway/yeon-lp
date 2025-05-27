@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link, Link as RouterLink } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
 
 const HeroSection: React.FC = () => {
@@ -10,8 +10,8 @@ const HeroSection: React.FC = () => {
     t
   } = useLanguage();
   
-  const scrollToNextSection = () => {
-    const nextSection = document.getElementById('value-proposition');
+  const scrollTo = (element: string) => {
+    const nextSection = document.getElementById(element);
     if (nextSection) {
       nextSection.scrollIntoView({
         behavior: 'smooth'
@@ -32,7 +32,7 @@ const HeroSection: React.FC = () => {
       <div className="container relative z-10 px-4 flex flex-col items-center text-center">
         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-4 animate-fade-in tracking-tight">
           <span className="bg-gradient-to-r from-white to-white/90 bg-clip-text">Liberte seu </span>
-          <span className="text-yeon-purple">potencial de artista</span>
+          <span className="text-yeon-orange">potencial de artista</span>
         </h1>
         
         <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-8 animate-fade-in">
@@ -40,14 +40,16 @@ const HeroSection: React.FC = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 mt-4 animate-fade-in">
-          <Button size="lg" className="bg-yeon-purple hover:bg-yeon-dark-purple text-white font-medium px-8 py-6 text-lg" asChild>
-            <RouterLink to="/calculator">
+          <Button size="lg" className="bg-yeon-orange hover:bg-yeon-dark-orange text-white font-medium px-8 py-6 text-lg" asChild>
+            <RouterLink to="/tools">
               Comece Agora
             </RouterLink>
           </Button>
           
-          <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg" onClick={scrollToNextSection}>
-            Saiba Mais
+          <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg" onClick={() => scrollTo("navigation-header")}>
+                        <Link to="/about">
+                          Saiba Mais
+                        </Link>
           </Button>
         </div>
       </div>
@@ -58,7 +60,7 @@ const HeroSection: React.FC = () => {
       </div>
       
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-0 right-0 flex justify-center animate-bounce cursor-pointer" onClick={scrollToNextSection}>
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center animate-bounce cursor-pointer" onClick={() => scrollTo('value-proposition')}>
         <ChevronDown className="h-8 w-8 text-white/70" />
       </div>
     </section>;

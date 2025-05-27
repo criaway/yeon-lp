@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PageLayout from '@/components/PageLayout';
@@ -13,7 +13,15 @@ const MusicTools: React.FC = () => {
   const { t } = useLanguage();
   const isMobile = useIsMobile();
   const [activeTab, setActiveTab] = useState<string>("calculator");
-
+  
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
+  }, []);
+  
   return (
     <>
       <Helmet>
@@ -46,13 +54,13 @@ const MusicTools: React.FC = () => {
             className="w-full"
           >
             <div className="flex justify-center mb-6">
-              <TabsList className={`${isMobile ? 'flex flex-wrap gap-2' : 'grid grid-cols-3'} w-full max-w-2xl`}>
+              <TabsList className={`${isMobile ? 'flex flex-wrap gap-2' : 'grid grid-cols-2'} w-full max-w-2xl`}>
                 <TabsTrigger value="calculator" className={`${isMobile ? 'flex-1 min-w-[120px]' : ''}`}>
                   Calculadora de Royalties
                 </TabsTrigger>
-                <TabsTrigger value="contracts" className={`${isMobile ? 'flex-1 min-w-[120px]' : ''}`}>
+                {/* <TabsTrigger value="contracts" className={`${isMobile ? 'flex-1 min-w-[120px]' : ''}`}>
                   Modelos de Contratos
-                </TabsTrigger>
+                </TabsTrigger> */}
                 <TabsTrigger value="spotify" className={`${isMobile ? 'flex-1 min-w-[120px]' : ''}`}>
                   Frite meu Spotify
                 </TabsTrigger>
@@ -63,9 +71,9 @@ const MusicTools: React.FC = () => {
               <StreamingCalculator />
             </TabsContent>
             
-            <TabsContent value="contracts" className="mt-4">
+            {/* <TabsContent value="contracts" className="mt-4">
               <ContractsSection />
-            </TabsContent>
+            </TabsContent> */}
             
             <TabsContent value="spotify" className="mt-4">
               <SpotifyRoaster />

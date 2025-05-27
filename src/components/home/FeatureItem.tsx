@@ -26,7 +26,7 @@ const FeatureItem: React.FC<FeatureItemProps> = ({
         <div className="flex items-center gap-2 mb-3">
           <h3 className="text-xl md:text-2xl font-semibold">{title}</h3>
           {tag && (
-            <Badge className="bg-yeon-purple hover:bg-yeon-purple text-xs">
+            <Badge className="bg-yeon-orange hover:bg-yeon-orange text-xs">
               {tag}
             </Badge>
           )}

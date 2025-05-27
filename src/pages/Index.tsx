@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import PageLayout from '@/components/PageLayout';
 import HeroSection from '@/components/home/HeroSection';
@@ -26,6 +26,14 @@ const IndexContent: React.FC = () => {
 };
 
 const Index: React.FC = () => {
+    useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
+    }, []);
+    
   return (
     <>
       <Helmet>

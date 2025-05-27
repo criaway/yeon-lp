@@ -23,7 +23,7 @@ const SocialLinks: React.FC<SocialLinkProps> = ({ className }) => {
     },
     {
       name: "TikTok",
-      url: "https://tiktok.com/yeon.live",
+      url: "https://tiktok.com/@yeon.live",
       // Creating a custom TikTok icon since it's not available in lucide-react
       icon: () => (
         <svg
@@ -58,7 +58,7 @@ const SocialLinks: React.FC<SocialLinkProps> = ({ className }) => {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white hover:text-yeon-purple transition-colors"
+            className="text-white hover:text-yeon-orange transition-colors"
             aria-label={link.name}
           >
             <IconComponent className="w-5 h-5" />

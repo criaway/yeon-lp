@@ -23,13 +23,13 @@ const FeaturesSection: React.FC = () => {
             <TabsList className="bg-secondary/30 p-1 rounded-full">
               <TabsTrigger 
                 value="artists" 
-                className="rounded-full px-6 py-2 data-[state=active]:bg-yeon-purple data-[state=active]:text-white"
+                className="rounded-full px-6 py-2 data-[state=active]:bg-yeon-orange data-[state=active]:text-white"
               >
                 Para Artistas
               </TabsTrigger>
               <TabsTrigger 
                 value="fans" 
-                className="rounded-full px-6 py-2 data-[state=active]:bg-yeon-purple data-[state=active]:text-white"
+                className="rounded-full px-6 py-2 data-[state=active]:bg-yeon-orange data-[state=active]:text-white"
               >
                 Para Fãs e Contratantes
               </TabsTrigger>

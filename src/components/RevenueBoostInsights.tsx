@@ -95,7 +95,7 @@ const RevenueBoostInsights: React.FC<RevenueBoostInsightsProps> = ({
         <AccordionItem value="revenue-insights" className="border-none">
           <AccordionTrigger className="bg-yeon-darker-bg border border-white/5 rounded-t-lg px-4 py-3 hover:no-underline">
             <div className="flex items-center gap-2">
-              <Lightbulb className="h-5 w-5 text-yeon-purple" />
+              <Lightbulb className="h-5 w-5 text-yeon-orange" />
               <h3 className="text-lg font-semibold">{t('boostRevenue')}</h3>
             </div>
           </AccordionTrigger>
@@ -104,7 +104,7 @@ const RevenueBoostInsights: React.FC<RevenueBoostInsightsProps> = ({
               {insights.map(insight => <Collapsible key={insight.id} className="bg-secondary/30 rounded-lg border border-white/5 overflow-hidden">
                   <CollapsibleTrigger className="w-full flex items-start justify-between p-4 text-left">
                     <div className="flex items-start gap-3">
-                      <Lightbulb className="h-5 w-5 text-yeon-purple mt-0.5 flex-shrink-0" />
+                      <Lightbulb className="h-5 w-5 text-yeon-orange mt-0.5 flex-shrink-0" />
                       <div>
                         <h4 className="font-medium">{insight.title}</h4>
                         <p className="text-sm text-muted-foreground">{insight.description}</p>

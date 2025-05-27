@@ -25,7 +25,7 @@ const MobileMenu: React.FC = () => {
   return (
     <Sheet>
       <SheetTrigger className="md:hidden" aria-label="Menu">
-        <Menu className="h-5 w-5 text-white hover:text-yeon-purple transition-colors" />
+        <Menu className="h-5 w-5 text-white hover:text-yeon-orange transition-colors" />
       </SheetTrigger>
       <SheetContent side="right" className="bg-yeon-dark-bg border-yeon-dark-bg">
         <SheetHeader>

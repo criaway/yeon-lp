@@ -11,8 +11,8 @@ interface ValuePropItemProps {
 
 const ValuePropItem: React.FC<ValuePropItemProps> = ({ icon, title, description }) => {
   return (
-    <div className="flex flex-col items-center text-center p-6 bg-yeon-card-bg rounded-lg border border-white/5 hover:border-yeon-purple/30 transition-all duration-300 hover:-translate-y-1">
-      <div className="p-4 bg-yeon-purple/10 rounded-full mb-4">
+    <div className="flex flex-col items-center text-center p-6 bg-yeon-card-bg rounded-lg border border-white/5 hover:border-yeon-orange/30 transition-all duration-300 hover:-translate-y-1">
+      <div className="p-4 bg-yeon-orange/10 rounded-full mb-4">
         {icon}
       </div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
@@ -26,17 +26,17 @@ const ValuePropositionSection: React.FC = () => {
   
   const valueProps = [
     {
-      icon: <Settings className="h-8 w-8 text-yeon-purple" />,
+      icon: <Settings className="h-8 w-8 text-yeon-orange" />,
       title: "Gestão Inteligente",
       description: "Ferramentas avançadas para gerenciar sua carreira musical de forma eficiente e profissional."
     },
     {
-      icon: <Globe className="h-8 w-8 text-yeon-purple" />,
+      icon: <Globe className="h-8 w-8 text-yeon-orange" />,
       title: "Alcance Global",
       description: "Distribua sua música em todas as plataformas principais de streaming ao redor do mundo."
     },
     {
-      icon: <DollarSign className="h-8 w-8 text-yeon-purple" />,
+      icon: <DollarSign className="h-8 w-8 text-yeon-orange" />,
       title: "Monetização Direta",
       description: "Maximize seus ganhos com taxas transparentes e pagamentos diretos para sua conta."
     }

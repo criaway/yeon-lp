@@ -1,5 +1,5 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLanguage } from '@/context/LanguageContext';
 import PageLayout from '@/components/PageLayout';
@@ -220,7 +220,7 @@ const ArtistsContent: React.FC = () => {
                   <Filter size={16} />
                   Filtros
                   {activeFilterCount > 0 && (
-                    <span className="bg-yeon-purple text-white text-xs py-0.5 px-1.5 rounded-full">
+                    <span className="bg-yeon-orange text-white text-xs py-0.5 px-1.5 rounded-full">
                       {activeFilterCount}
                     </span>
                   )}
@@ -242,7 +242,7 @@ const ArtistsContent: React.FC = () => {
                   <Filter size={16} />
                   Filtros
                   {activeFilterCount > 0 && (
-                    <span className="bg-yeon-purple text-white text-xs py-0.5 px-1.5 rounded-full">
+                    <span className="bg-yeon-orange text-white text-xs py-0.5 px-1.5 rounded-full">
                       {activeFilterCount}
                     </span>
                   )}
@@ -274,6 +274,14 @@ const ArtistsContent: React.FC = () => {
 };
 
 const Artists: React.FC = () => {
+    useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
+    }, []);
+    
   return (
     <>
       <Helmet>

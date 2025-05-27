@@ -47,7 +47,7 @@ const ResultsSection: React.FC<ResultsSectionProps> = ({ results, platforms, tot
                 <div 
                   key={result.platformId}
                   className={`flex items-center justify-between p-3 rounded-lg ${
-                    isHighest ? 'bg-yeon-purple/10 border border-yeon-purple/20' : 'bg-secondary/30'
+                    isHighest ? 'bg-yeon-orange/10 border border-yeon-orange/20' : 'bg-secondary/30'
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -84,7 +84,7 @@ const ResultsSection: React.FC<ResultsSectionProps> = ({ results, platforms, tot
         <div className="p-4 border-t border-white/10 bg-secondary/30">
           <div className="flex justify-between items-center">
             <h3 className="font-semibold">{t('totalRevenue')}</h3>
-            <p className="text-xl font-bold text-yeon-purple">{formatCurrency(totalRevenue)}</p>
+            <p className="text-xl font-bold text-yeon-orange">{formatCurrency(totalRevenue)}</p>
           </div>
           <p className="text-xs text-muted-foreground mt-2">
             {t('disclaimerText')}

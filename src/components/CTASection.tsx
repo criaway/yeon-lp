@@ -97,7 +97,7 @@ const CTASection: React.FC = () => {
           />
           <Button 
             type="submit"
-            className="bg-yeon-purple hover:bg-yeon-dark-purple text-white font-medium"
+            className="bg-yeon-orange hover:bg-yeon-dark-orange text-white font-medium"
             disabled={isLoading}
           >
             {isLoading ? (

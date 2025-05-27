@@ -24,7 +24,7 @@ const NotFound = () => {
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4 text-white">404</h1>
           <p className="text-xl text-gray-300 mb-4">Oops! Página não encontrada</p>
-          <Link to="/" className="text-yeon-purple hover:text-yeon-dark-purple transition-colors underline">
+          <Link to="/" className="text-yeon-orange hover:text-yeon-dark-orange transition-colors underline">
             Voltar para a página inicial
           </Link>
         </div>

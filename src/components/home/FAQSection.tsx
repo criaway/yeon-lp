@@ -39,7 +39,7 @@ const FAQSection: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => <AccordionItem key={index} value={`item-${index}`} className="border-white/10">
-                <AccordionTrigger className="text-lg font-medium hover:text-yeon-purple">
+                <AccordionTrigger className="text-lg font-medium hover:text-yeon-orange">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-white/70">
@@ -49,11 +49,11 @@ const FAQSection: React.FC = () => {
           </Accordion>
         </div>
         
-        <div className="flex justify-center mt-10">
-          <Button asChild variant="outline" className="border-yeon-purple/50 text-yeon-purple hover:bg-yeon-purple/10">
+        {/* <div className="flex justify-center mt-10">
+          <Button asChild variant="outline" className="border-yeon-orange/50 text-yeon-orange hover:bg-yeon-orange/10">
             <Link to="/about">Conheça Nossa Documentação Completa</Link>
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>;
 };

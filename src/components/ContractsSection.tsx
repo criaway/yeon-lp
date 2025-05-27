@@ -187,7 +187,7 @@ const ContractsSection: React.FC = () => {
         ))}
       </div>
       
-      <div className="mt-8 bg-yeon-purple/10 p-6 rounded-lg border border-yeon-purple/30">
+      <div className="mt-8 bg-yeon-orange/10 p-6 rounded-lg border border-yeon-orange/30">
         <div className="flex flex-col md:flex-row gap-6">
           <div className="md:w-2/3">
             <h2 className="text-2xl font-semibold mb-4">Curso KSM Musical</h2>
@@ -198,7 +198,7 @@ const ContractsSection: React.FC = () => {
               O curso oferece conhecimentos essenciais para artistas e profissionais da música navegarem com sucesso no mercado musical atual.
             </p>
             <Button 
-              className="mt-4 bg-yeon-purple hover:bg-yeon-dark-purple" 
+              className="mt-4 bg-yeon-orange hover:bg-yeon-dark-orange" 
               variant="default"
               onClick={() => window.open('https://www.ksmmusical.com/', '_blank')}
             >
@@ -207,8 +207,8 @@ const ContractsSection: React.FC = () => {
             </Button>
           </div>
           <div className="md:w-1/3 flex items-center justify-center">
-            <div className="bg-gradient-to-br from-yeon-purple/30 to-transparent p-6 rounded-full">
-              <File className="h-16 w-16 text-yeon-purple" />
+            <div className="bg-gradient-to-br from-yeon-orange/30 to-transparent p-6 rounded-full">
+              <File className="h-16 w-16 text-yeon-orange" />
             </div>
           </div>
         </div>

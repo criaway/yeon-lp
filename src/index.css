@@ -30,7 +30,7 @@
 
 @layer base {
   * {
-    @apply border-border selection:bg-yeon-purple/10 selection:text-white;
+    @apply border-border selection:bg-yeon-orange/10 selection:text-white;
   }
   
   body {

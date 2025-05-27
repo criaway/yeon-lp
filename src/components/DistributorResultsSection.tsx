@@ -61,7 +61,7 @@ const DistributorResultsSection: React.FC<DistributorResultsSectionProps> = ({
           </p>
           
           <div className="flex items-center gap-2 p-3 bg-white/5 rounded-lg mb-4 text-sm">
-            <InfoIcon size={16} className="text-yeon-purple" />
+            <InfoIcon size={16} className="text-yeon-orange" />
             <p className="text-white/80">
               {t('distributorFeesDisclaimer')}
             </p>
@@ -88,7 +88,7 @@ const DistributorResultsSection: React.FC<DistributorResultsSectionProps> = ({
                   <TableRow 
                     key={distributor.id} 
                     className={`border-white/5 cursor-pointer transition-colors ${
-                      isSelected ? 'bg-yeon-purple/10 hover:bg-yeon-purple/15' : 'hover:bg-white/5'
+                      isSelected ? 'bg-yeon-orange/10 hover:bg-yeon-orange/15' : 'hover:bg-white/5'
                     }`}
                     onClick={() => onSelectDistributor(isSelected ? null : distributor.id)}
                   >
@@ -151,9 +151,9 @@ const DistributorResultsSection: React.FC<DistributorResultsSectionProps> = ({
                   <p className="text-sm text-muted-foreground">{t('feeAmount')}</p>
                   <p className="text-lg font-medium">{formatCurrency(selectedDistributorData.fee)}</p>
                 </div>
-                <div className="col-span-2 p-3 rounded-lg bg-yeon-purple/10 border border-yeon-purple/20">
+                <div className="col-span-2 p-3 rounded-lg bg-yeon-orange/10 border border-yeon-orange/20">
                   <p className="text-sm text-muted-foreground">{t('netRevenue')}</p>
-                  <p className="text-xl font-bold text-yeon-purple">{formatCurrency(selectedDistributorData.netAmount)}</p>
+                  <p className="text-xl font-bold text-yeon-orange">{formatCurrency(selectedDistributorData.netAmount)}</p>
                 </div>
               </div>
             </div>

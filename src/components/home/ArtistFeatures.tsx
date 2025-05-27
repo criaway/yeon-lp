@@ -45,7 +45,7 @@ const ArtistFeatures: React.FC = () => {
         <FeatureItem 
           key={index} 
           {...feature} 
-          size={index === 0 || index === 3 ? 'large' : 'small'}
+          size={index === 0 || index === 3 || index > 5 ? 'large' : 'small'}
         />
       ))}
     </div>
