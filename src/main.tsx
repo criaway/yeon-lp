@@ -4,6 +4,8 @@ import App from "./App.tsx";
 import "./index.css";
 import { ClerkProvider } from "@clerk/clerk-react";
 import { ptBR } from "@clerk/localizations";
+import { inject } from '@vercel/analytics';
+inject();
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
