@@ -75,12 +75,12 @@ const MusicTools: React.FC = () => {
                 {/* <TabsTrigger value="contracts" className={`${isMobile ? 'flex-1 min-w-[120px]' : ''}`}>
                   Modelos de Contratos
                 </TabsTrigger> */}
-                {/* <TabsTrigger
+                <TabsTrigger
                   value="spotify"
                   className={`${isMobile ? "flex-1 min-w-[120px]" : ""}`}
                 >
                   Frite meu Spotify
-                </TabsTrigger> */}
+                </TabsTrigger>
               </TabsList>
             </div>
 
