@@ -7,9 +7,14 @@ import ContractsSection from "@/components/ContractsSection";
 import SpotifyRoaster from "@/components/SpotifyRoaster";
 import { useLanguage } from "@/context/LanguageContext";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const MusicTools: React.FC = () => {
   const { t } = useLanguage();
+  const location = useLocation()
+  const searchParams = new URLSearchParams(location.search)
+
+  const code = searchParams.get('code')
   const isMobile = useIsMobile();
   const [activeTab, setActiveTab] = useState<string>("calculator");
 
@@ -20,9 +25,7 @@ const MusicTools: React.FC = () => {
       behavior: "smooth",
     });
 
-    const roast = localStorage.getItem('spotify_roast');
-
-    if (roast) {
+    if (code) {
       setActiveTab('spotify')
     }
   }, []);
@@ -89,9 +92,9 @@ const MusicTools: React.FC = () => {
               <ContractsSection />
             </TabsContent> */}
 
-            {/* <TabsContent value="spotify" className="mt-4">
+            <TabsContent value="spotify" className="mt-4">
               <SpotifyRoaster onTabChange={setActiveTab} />
-            </TabsContent> */}
+            </TabsContent>
           </Tabs>
         </div>
       </PageLayout>

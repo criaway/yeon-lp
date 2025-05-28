@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { CornerDownLeft, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,8 +19,10 @@ import { useSearchParams } from "react-router-dom";
 
 const SPOTIFY_CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 // Use the exact redirect URI that's registered in Spotify
-const REDIRECT_URI = 'https://yeon.live';
+const REDIRECT_URI = import.meta.env.VITE_FRONTEND_URL || 'http://127.0.0.1:8080';
 const CALLBACK_URI = `${REDIRECT_URI}/callback`;
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:3000';
 
 interface SpotifyRoasterProps {
   onTabChange?: (tab: string) => void;
@@ -31,13 +33,14 @@ const SpotifyRoaster: React.FC<SpotifyRoasterProps> = ({ onTabChange }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [roast, setRoast] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const processedCodeRef = useRef<string | null>(null); // Ref to track the code that has been processed
 
   // Show roast from localStorage if present (e.g., after /callback redirect)
   useEffect(() => {
     const storedRoast = localStorage.getItem('spotify_roast');
     if (storedRoast) {
       setRoast(storedRoast);
-      localStorage.removeItem('spotify_roast');
+      localStorage.removeItem('spotify_roast'); // Clear after displaying
       if (onTabChange) {
         onTabChange('spotify');
       }
@@ -47,71 +50,39 @@ const SpotifyRoaster: React.FC<SpotifyRoasterProps> = ({ onTabChange }) => {
   const handleSpotifyLogin = () => {
     const scope = 'user-read-private user-read-email user-top-read';
     const state = Math.random().toString(36).substring(7);
-    
-    // Store state in localStorage to verify on callback
+
+    // Store state in localStorage to verify on callback (optional with this flow, but good practice)
     localStorage.setItem('spotify_auth_state', state);
-    
+
     const authUrl = new URL('https://accounts.spotify.com/authorize');
     authUrl.searchParams.append('client_id', SPOTIFY_CLIENT_ID || '');
     authUrl.searchParams.append('response_type', 'code');
+    // Spotify will redirect to this URI after authorization
     authUrl.searchParams.append('redirect_uri', CALLBACK_URI);
     authUrl.searchParams.append('scope', scope);
     authUrl.searchParams.append('state', state);
     authUrl.searchParams.append('show_dialog', 'true');
-    
+
     console.log('Starting Spotify auth with state:', state);
     console.log('Auth URL:', authUrl.toString());
     window.location.href = authUrl.toString();
   };
 
-  useEffect(() => {
-    // Check for token in URL or localStorage
-    const token = searchParams.get('token');
-    const error = searchParams.get('error');
-    const state = searchParams.get('state');
-    const storedState = localStorage.getItem('spotify_auth_state');
-
-    console.log('Checking auth state:', { token, error, state, storedState });
-
-    if (error) {
-      setError(decodeURIComponent(error));
-      // Clear the URL parameters
-      window.history.replaceState({}, document.title, window.location.pathname);
-      return;
-    }
-
-    // Only get roast if we have a new token from the callback
-    if (token) {
-      console.log('Got new token, requesting roast...');
-      // Store token in localStorage to prevent duplicate requests
-      const storedToken = localStorage.getItem('spotify_access_token');
-      if (storedToken === token) {
-        console.log('Token already used, skipping roast request');
-        // Clear the URL parameters and stored state
-        window.history.replaceState({}, document.title, window.location.pathname);
-        localStorage.removeItem('spotify_auth_state');
-        return;
-      }
-      localStorage.setItem('spotify_access_token', token);
-      getRoast(token);
-      // Clear the URL parameters and stored state
-      window.history.replaceState({}, document.title, window.location.pathname);
-      localStorage.removeItem('spotify_auth_state');
-    }
-  }, [searchParams]);
-
-  const getRoast = async (accessToken: string) => {
+  // Modified getRoast to accept code instead of accessToken
+  const getRoast = async (code: string) => {
     try {
       setLoading(true);
       setError(null);
-      console.log('Making roast request with token:', accessToken.substring(0, 10) + '...');
-      
-      const response = await fetch('https://yeon.live/api/roast', {
+      console.log('Making roast request with code:', code?.substring(0, 10) + '...');
+
+      // Send the code to the backend's roast endpoint
+      const response = await fetch(`${API_BASE_URL}/api/roast`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ accessToken }),
+        // Send the code in the body
+        body: JSON.stringify({ code, redirectUri: CALLBACK_URI }), // Pass redirectUri too
       });
 
       if (!response.ok) {
@@ -122,27 +93,66 @@ const SpotifyRoaster: React.FC<SpotifyRoasterProps> = ({ onTabChange }) => {
 
       const data = await response.json();
       console.log('Got roast response:', data);
-      setRoast(data.roast);
-      toast.success("Perfil foi fritado! 🔥");
-      // Switch to the roast tab if the callback is provided
-      if (onTabChange) {
-        onTabChange('spotify');
+
+      if (data.roast) {
+        setRoast(data.roast);
+        localStorage.setItem('spotify_roast', data.roast); // Store roast on success
+        toast.success("Perfil foi fritado! 🔥");
+        // Switch to the roast tab if the callback is provided
+        if (onTabChange) {
+          onTabChange('spotify');
+        }
+      } else if (data.error) {
+          throw new Error(data.error);
+      } else {
+          throw new Error('No roast received in response.');
       }
+
     } catch (err) {
       console.error("Error roasting Spotify profile:", err);
       setError(err instanceof Error ? err.message : "Ocorreu um erro ao fritar o perfil. Tente novamente.");
-      // Clear the token on error
+      // Clear stored token/roast on error
       localStorage.removeItem('spotify_access_token');
+      localStorage.removeItem('spotify_roast');
     } finally {
       setLoading(false);
     }
   };
 
+  // Handle redirect from callback with code
+  useEffect(() => {
+    const code = searchParams.get('code');
+    const errorParam = searchParams.get('error');
+
+    // Clear code/error from URL after processing
+    if (code || errorParam) {
+       window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    if (errorParam) {
+      const decodedError = decodeURIComponent(errorParam);
+      console.error("Error from URL params:", decodedError);
+      setError(decodedError);
+      return;
+    }
+
+    // Only fetch if we have a new code, no roast yet, not already loading, and haven't processed this code
+    if (code && !roast && !loading && processedCodeRef.current !== code) {
+      console.log('Detected new code in URL, getting roast...');
+      processedCodeRef.current = code; // Mark this code as processed
+      getRoast(code); // Call getRoast with the code
+    }
+
+  }, [searchParams, roast, loading, getRoast]); // Depend on searchParams, roast, loading, and getRoast
+
   const handleReset = () => {
     setRoast(null);
     setError(null);
-    localStorage.removeItem('spotify_auth_state');
+    localStorage.removeItem('spotify_auth_state'); // Optional to clear
     localStorage.removeItem('spotify_access_token');
+    localStorage.removeItem('spotify_roast');
+    // Clear processed code ref on reset to allow new login
+    processedCodeRef.current = null;
   };
 
   return (
@@ -165,7 +175,7 @@ const SpotifyRoaster: React.FC<SpotifyRoasterProps> = ({ onTabChange }) => {
         }
         </div>
 
-        {!roast && (
+        {!loading && !roast && (
         <Card>
           <CardHeader>
             <CardTitle>Conecte sua conta do Spotify</CardTitle>
@@ -176,7 +186,7 @@ const SpotifyRoaster: React.FC<SpotifyRoasterProps> = ({ onTabChange }) => {
           <CardContent>
             <div className="flex flex-col gap-4">
               {!roast && !loading && (
-                <Button 
+                <Button
                   onClick={handleSpotifyLogin}
                   className="w-full"
                   disabled={loading}
@@ -224,9 +234,9 @@ const SpotifyRoaster: React.FC<SpotifyRoasterProps> = ({ onTabChange }) => {
               <p className="text-sm text-muted-foreground">
                 É só uma brincadeira! Cada artista tem seu valor único. 💚
               </p>
-              <Button 
-                variant="outline" 
-                onClick={handleReset}
+              <Button
+                variant="outline"
+                onClick={handleSpotifyLogin}
                 className="ml-4"
               >
                 Fritar novamente
