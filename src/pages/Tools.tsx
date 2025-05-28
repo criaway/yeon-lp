@@ -64,7 +64,7 @@ const MusicTools: React.FC = () => {
           >
             <div className="flex justify-center mb-6">
               <TabsList
-                className={`${isMobile ? "flex flex-wrap gap-2" : "grid grid-cols-1"} w-full max-w-lg`}
+                className={`${isMobile ? "flex flex-wrap gap-2" : "grid grid-cols-2"} w-full max-w-2xl`}
               >
                 <TabsTrigger
                   value="calculator"
