@@ -11,10 +11,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const MusicTools: React.FC = () => {
   const { t } = useLanguage();
-  const location = useLocation()
-  const searchParams = new URLSearchParams(location.search)
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
 
-  const code = searchParams.get('code')
+  const code = searchParams.get("code");
   const isMobile = useIsMobile();
   const [activeTab, setActiveTab] = useState<string>("calculator");
 
@@ -26,7 +26,7 @@ const MusicTools: React.FC = () => {
     });
 
     if (code) {
-      setActiveTab('spotify')
+      setActiveTab("spotify");
     }
   }, []);
 

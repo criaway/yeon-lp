@@ -55,8 +55,8 @@ const SocialProofSection: React.FC = () => {
   const { t } = useLanguage();
 
   const stats = [
-    { value: "64", label: "Artistas Cadastrados" },
-    { value: "27", label: "Cidades" },
+    { value: "63", label: "Artistas Cadastrados" },
+    { value: "+25", label: "Cidades" },
     { value: "7", label: "Estados" },
   ];
 
