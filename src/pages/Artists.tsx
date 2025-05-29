@@ -409,7 +409,7 @@ const ArtistsContent: React.FC = () => {
     {
       id: 18,
       name: "lets",
-      location: "São paulo, SP",
+      location: "São Paulo, SP",
       genres: ["R&B", "Afrobeat", "Pop"].map((i) =>
         toTitleCasePreservingSeparators(i),
       ),
@@ -427,7 +427,7 @@ const ArtistsContent: React.FC = () => {
     {
       id: 19,
       name: "Mustache",
-      location: "Duque de caxias , RJ",
+      location: "Duque de Caxias, RJ",
       genres: ["Hip Hop"].map((i) => toTitleCasePreservingSeparators(i)),
       bio: "Artista independente brasileiro(a)",
       image: "/placeholder.svg",
@@ -683,7 +683,7 @@ const ArtistsContent: React.FC = () => {
     {
       id: 32,
       name: "LD Original ",
-      location: "Duque de caxias, RJ",
+      location: "Duque de Caxias, RJ",
       genres: ["Trap", "rap"].map((i) => toTitleCasePreservingSeparators(i)),
       bio: "Artista independente brasileiro(a)",
       image: "/placeholder.svg",
@@ -1033,7 +1033,7 @@ const ArtistsContent: React.FC = () => {
     {
       id: 51,
       name: "Dufrois",
-      location: "Niteroi, RJ",
+      location: "Niterói, RJ",
       genres: ["Funk", "Rap", "drill"].map((i) =>
         toTitleCasePreservingSeparators(i),
       ),
